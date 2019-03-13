@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class MyComponentComponent implements OnInit {
 
   id: string = '';
+  pokemonChoisi: string = '';
   pokemons = ['Pikachu', 'Salamèche', 'Carapuce', 'Bulbizarre'];
 
   constructor() { }

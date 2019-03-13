@@ -5,6 +5,8 @@
   <input readonly value="{{id}}">
 </p>
 
-Vous avez entré : {{id}}
-
-<div *ngFor="let pokemon of pokemons">{{pokemon}}</div>
+<select [(ngModel)]="pokemonChoisi">
+  <option *ngFor="let pokemon of pokemons"  value="{{pokemon}}">{{pokemon}}</option>
+</select>
+¨Pokémon choisi :
+<input readonly value="{{pokemonChoisi}}">
