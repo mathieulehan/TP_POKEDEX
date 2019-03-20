@@ -1,12 +1,16 @@
 <p>
   On est dans le composant !
-
   <input [(ngModel)]="id">
   <input readonly value="{{id}}">
 </p>
-
+<p>
+  <label>Trier par nom</label>
+  <input type="text" class="form-control" name="name" [(ngModel)]="filter.name">
+</p>
 <select [(ngModel)]="pokemonChoisi">
-  <option *ngFor="let pokemon of pokemons"  value="{{pokemon}}">{{pokemon}}</option>
+  <option *ngFor="let pokemon of pokemonsInSelect| FilterPipe:filter" value="{{ pokemon.name }}">{{pokemon.name}}</option>
 </select>
 ¨Pokémon choisi :
 <input readonly value="{{pokemonChoisi}}">
+<br>
+<button (click)="displayChosenPokemon()">Go</button>
