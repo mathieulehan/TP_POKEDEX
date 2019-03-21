@@ -7,19 +7,13 @@ Votre entrée : <input readonly value="{{id}}">
 
 <p>
   <label>Trier par nom</label>
-  <input type="text" class="form-control" name="name">
+  <input type="text" class="form-control" name="name" [(ngModel)]="filter.results.name">
 </p>
+<select [(ngModel)]="pokemonChoisi.results">
+  <option *ngFor="let pokemonTrie of pokemonsInSelect.results| FilterPipe:filter"
+          value="{{ pokemonTrie.name }}">{{pokemonTrie.name}}</option>
+</select>
 
-<table>
-  <thead>
-  <th>Liste triée</th>
-  </thead>
-  <tbody>
-  <tr *ngFor="let pokemonTrie of pokemonsInSelect.results">
-    <td>{{pokemonTrie.name}}</td>
-  </tr>
-  </tbody>
-</table>
 <table>
   <thead>
   <th>Liste non triée</th>

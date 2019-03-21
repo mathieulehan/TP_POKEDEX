@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Pokemon} from "../pokemon";
+import {Pokemon, SubArray} from "../pokemon";
 import {ApiService} from "../api.service";
 
 @Component({
@@ -10,6 +10,7 @@ import {ApiService} from "../api.service";
 })
 export class MyComponentComponent implements OnInit {
 
+  id: number;
   pokemons: Pokemon[] = [];
   filter: Pokemon;
   pokemonChoisi: Pokemon;
@@ -37,5 +38,13 @@ export class MyComponentComponent implements OnInit {
         this.pokemonsInSelect = data;
       }
     );
+    this.initializeFilter();
+  }
+
+  initializeFilter() {
+    let results = new SubArray("P", "url");
+    let defaultPokemonFilter = new Pokemon(1, "P", results);
+    this.filter = defaultPokemonFilter;
+    this.pokemonChoisi = defaultPokemonFilter;
   }
 }

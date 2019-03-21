@@ -16,14 +16,14 @@ export class FilterPokemonPipePipe implements PipeTransform {
   }
 
   /**
-   * Perform the filtering.
+   * Perform the filtering
    *
    * @param {Item} item The book to compare to the filter.
    * @param {Item} filter The filter to apply.
    * @return {boolean} True if book satisfies filters, false if not.
    */
   applyFilter(item: Pokemon, filter: Pokemon): boolean {
-    if (filter.results.name && item.results.name.toLowerCase().indexOf(filter.results.name.toLowerCase()) === -1) {
+    if (filter.results.name && item.name.toLowerCase().indexOf(filter.results.name.toLowerCase()) === -1) {
       return false;
     }
     return true;
