@@ -41,6 +41,11 @@ export class MyComponentComponent implements OnInit {
     this.initializeFilter();
   }
 
+  getPokemonInfo(pokemon: Pokemon) {
+    this.pokemonApi.getPokemonInfo(pokemon);
+    console.log(pokemon);
+  }
+
   initializeFilter() {
     let results = new SubArray("P", "url");
     let defaultPokemonFilter = new Pokemon(1, "P", results);

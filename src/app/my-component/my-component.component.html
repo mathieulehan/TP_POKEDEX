@@ -9,10 +9,12 @@ Votre entrée : <input readonly value="{{id}}">
   <label>Trier par nom</label>
   <input type="text" class="form-control" name="name" [(ngModel)]="filter.results.name">
 </p>
-<select [(ngModel)]="pokemonChoisi.results">
+<select [(ngModel)]="pokemonChoisi">
   <option *ngFor="let pokemonTrie of pokemonsInSelect.results| FilterPipe:filter"
           value="{{ pokemonTrie.name }}">{{pokemonTrie.name}}</option>
 </select>
+
+<button (onClick)="getPokemonInfo(pokemonChoisi)">Je choisis ce pokémon !</button>
 
 <table>
   <thead>
