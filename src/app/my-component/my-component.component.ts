@@ -1,31 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { Pokemon} from "../pokemon";
+import {Component, OnInit} from '@angular/core';
+import {Pokemon} from "../pokemon";
+import {ApiService} from "../api.service";
 
 @Component({
   selector: 'app-my-component',
   templateUrl: './my-component.component.html',
-  styleUrls: ['./my-component.component.css']
+  styleUrls: ['./my-component.component.css'],
+  providers: [ApiService]
 })
 export class MyComponentComponent implements OnInit {
 
-  id: string = '';
-  filter: Pokemon = new Pokemon("Pikachu");
-  pikachu = new Pokemon("Pikachu");
-  pokemonChoisi: Pokemon = this.pikachu;
-  salameche = new Pokemon("Salamèche");
-  carapuce = new Pokemon("Carapuce");
-  bulbizarre = new Pokemon("Bulbizarre");
-  pokemons: Array<Pokemon> = [this.pikachu, this.salameche, this.carapuce, this.bulbizarre];
+  pokemons: Pokemon[] = [];
+  filter: Pokemon;
+  pokemonChoisi: Pokemon;
+  pokemonsInSelect: Pokemon[] = [];
 
-  pokemonsInSelect = [];
-
-  constructor() { }
+  constructor(public pokemonApi: ApiService) {
+  }
 
   ngOnInit() {
-    this.pokemonsInSelect = this.pokemons;
+    this.getPokemons();
   }
 
   displayChosenPokemon(){
-    alert(this.pokemonChoisi.name);
+    alert(this.pokemonChoisi.results.name);
+  }
+
+  /**
+   * On initialise la liste non triée ainsi que la liste triée de pokemons,
+   *  qui sera réellement triée après l'entrée de l'utilisateur
+   */
+  getPokemons() {
+    this.pokemonApi.getPokemon().subscribe(
+      (data: Pokemon[]) => {
+        this.pokemons = data;
+        this.pokemonsInSelect = data;
+      }
+    );
   }
 }

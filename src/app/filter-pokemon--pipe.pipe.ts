@@ -1,6 +1,6 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 
-import { Pokemon } from './pokemon';
+import {Pokemon} from './pokemon';
 
 @Pipe({
   name: 'FilterPipe',
@@ -23,7 +23,7 @@ export class FilterPokemonPipePipe implements PipeTransform {
    * @return {boolean} True if book satisfies filters, false if not.
    */
   applyFilter(item: Pokemon, filter: Pokemon): boolean {
-    if (filter.name && item.name.toLowerCase().indexOf(filter.name.toLowerCase()) === -1) {
+    if (filter.results.name && item.results.name.toLowerCase().indexOf(filter.results.name.toLowerCase()) === -1) {
       return false;
     }
     return true;
