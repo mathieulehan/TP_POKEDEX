@@ -11,10 +11,10 @@ Votre entrée : <input readonly value="{{id}}">
 </p>
 <select [(ngModel)]="pokemonChoisi">
   <option *ngFor="let pokemonTrie of pokemonsInSelect.results| FilterPipe:filter"
-          value="{{ pokemonTrie.name }}">{{pokemonTrie.name}}</option>
+          [ngValue]="pokemonTrie">{{pokemonTrie.name}}</option>
 </select>
 
-<button (onClick)="getPokemonInfo(pokemonChoisi)">Je choisis ce pokémon !</button>
+<button (click)="getPokemonInfo(pokemonChoisi)">Je choisis ce pokémon !</button>
 
 <table>
   <thead>

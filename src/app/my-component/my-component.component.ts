@@ -21,6 +21,7 @@ export class MyComponentComponent implements OnInit {
 
   ngOnInit() {
     this.getPokemons();
+    this.pokemonsInSelect
   }
 
   displayChosenPokemon(){
@@ -41,15 +42,21 @@ export class MyComponentComponent implements OnInit {
     this.initializeFilter();
   }
 
+  /**
+   * Récupère le détail d'un pokémon particulier
+   * @param pokemon
+   */
   getPokemonInfo(pokemon: Pokemon) {
-    this.pokemonApi.getPokemonInfo(pokemon);
+    this.pokemonApi.getPokemonInfo(pokemon).subscribe(
+      (data: Pokemon) => {
+        this.pokemonChoisi = data;
+      }
+    );
     console.log(pokemon);
   }
 
   initializeFilter() {
-    let results = new SubArray("P", "url");
-    let defaultPokemonFilter = new Pokemon(1, "P", results);
-    this.filter = defaultPokemonFilter;
-    this.pokemonChoisi = defaultPokemonFilter;
+    let results = new SubArray("P", "");
+    this.filter = new Pokemon(1, "P", results, "coin");
   }
 }

@@ -1,5 +1,7 @@
 export class Pokemon {
 
+  name: string;
+  url: string;
   count: number;
   next: string;
   results: SubArray;
@@ -20,19 +22,12 @@ export class Pokemon {
   base_experience: 64;
   types: any;
 
-  constructor(count: number, next: string, results: SubArray) {
+  constructor(count: number, next: string, results: SubArray, types: any) {
     this.count = count;
     this.next = next;
     this.results = results;
+    this.types = 'coin';
   }
-
-  setPokemonInfo(json: Object) {
-    let jsonString = json.toString();
-    this.forms, this.abilities, this.stats, this.weight, this.moves, this.sprites,
-      this.held_items, this.location_area_encounters, this.height, this.is_default, this.species,
-      this.id, this.order, this.game_indices, this.base_experience, this.types = JSON.parse(jsonString);
-  }
-
 }
 
 export class SubArray {

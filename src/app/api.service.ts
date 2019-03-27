@@ -25,8 +25,11 @@ export class ApiService {
       );
   }
 
-  getPokemonInfo(pokemon: Pokemon): void {
-    pokemon.setPokemonInfo(this.http.get(pokemon.results.url));
+  getPokemonInfo(pokemon: Pokemon): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${pokemon.url}`)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: HttpErrorResponse) {
