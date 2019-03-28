@@ -48,15 +48,18 @@ export class MyComponentComponent implements OnInit {
    */
   getPokemonInfo(pokemon: Pokemon) {
     this.pokemonApi.getPokemonInfo(pokemon).subscribe(
-      (data: Pokemon) => {
-        this.pokemonChoisi = data;
+      res => {
+        this.pokemonChoisi = res;
       }
     );
     console.log(pokemon);
   }
 
   initializeFilter() {
-    let results = new SubArray("P", "");
-    this.filter = new Pokemon(1, "P", results, "coin");
+    let results = new SubArray("", "");
+    let blank = new Pokemon();
+    blank.results = results;
+    this.filter = blank;
+    this.pokemonChoisi = blank;
   }
 }

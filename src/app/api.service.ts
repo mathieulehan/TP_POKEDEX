@@ -8,6 +8,8 @@ import {Pokemon} from "./pokemon";
 @Injectable({
   providedIn: 'root'
 })
+
+@Injectable()
 export class ApiService {
   url: any;
 
@@ -25,6 +27,10 @@ export class ApiService {
       );
   }
 
+  /**
+   * Récupère les infos d'un pokémon
+   * @param pokemon
+   */
   getPokemonInfo(pokemon: Pokemon): Observable<Pokemon> {
     return this.http.get<Pokemon>(`${pokemon.url}`)
       .pipe(

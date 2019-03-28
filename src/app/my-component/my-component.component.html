@@ -15,7 +15,7 @@ Votre entrée : <input readonly value="{{id}}">
 </select>
 
 <button (click)="getPokemonInfo(pokemonChoisi)">Je choisis ce pokémon !</button>
-
+<app-pokemon-detail [pokemon]="pokemonChoisi"></app-pokemon-detail>
 <table>
   <thead>
   <th>Liste non triée</th>

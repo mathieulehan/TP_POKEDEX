@@ -21,13 +21,6 @@ export class Pokemon {
   game_indices: any;
   base_experience: 64;
   types: any;
-
-  constructor(count: number, next: string, results: SubArray, types: any) {
-    this.count = count;
-    this.next = next;
-    this.results = results;
-    this.types = 'coin';
-  }
 }
 
 export class SubArray {
