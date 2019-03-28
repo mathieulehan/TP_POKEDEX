@@ -1,4 +1,4 @@
-import { FilterPokemonPipePipe } from './filter-pokemon--pipe.pipe';
+import {FilterPokemonPipePipe} from './filter-pokemon--pipe.pipe';
 
 describe('FilterPokemonPipePipe', () => {
   it('create an instance', () => {

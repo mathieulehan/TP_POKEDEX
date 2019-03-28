@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Pokemon, SubArray} from "../pokemon";
-import {ApiService} from "../api.service";
+import {Pokemon, SubArray} from "../pokemon/pokemon";
+import {ApiService} from "../pokemon/api.service";
 
 @Component({
   selector: 'app-my-component',
@@ -21,7 +21,6 @@ export class MyComponentComponent implements OnInit {
 
   ngOnInit() {
     this.getPokemons();
-    this.pokemonsInSelect
   }
 
   displayChosenPokemon(){
