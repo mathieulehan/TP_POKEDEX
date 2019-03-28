@@ -4,6 +4,7 @@ import {Observable, throwError} from "rxjs";
 import 'rxjs/add/operator/map';
 import {catchError} from 'rxjs/operators';
 import {Pokemon} from "./pokemon";
+import {ListPokemon} from "./list-pokemon";
 
 @Injectable({
   providedIn: 'root'
@@ -20,8 +21,8 @@ export class ApiService {
   /**
    * Récupere une liste de pokemons
    */
-  getPokemon(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>(`${this.url}`)
+  getPokemon(): Observable<ListPokemon> {
+    return this.http.get<ListPokemon>(`${this.url}`)
       .pipe(
         catchError(this.handleError)
       );
@@ -31,8 +32,8 @@ export class ApiService {
    * Récupère les infos d'un pokémon
    * @param pokemon
    */
-  getPokemonInfo(pokemon: Pokemon): Observable<Pokemon> {
-    return this.http.get<Pokemon>(`${pokemon.url}`)
+  getPokemonInfo(name: string): Observable<Pokemon> {
+    return this.http.get<Pokemon>(`${this.url.name}`)
       .pipe(
         catchError(this.handleError)
       );

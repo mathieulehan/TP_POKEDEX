@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Pokemon, SubArray} from "../pokemon/pokemon";
+import {Pokemon} from "../pokemon/pokemon";
 import {ApiService} from "../pokemon/api.service";
+import {ListPokemon} from "../pokemon/list-pokemon";
 
 @Component({
   selector: 'app-my-component',
@@ -11,20 +12,16 @@ import {ApiService} from "../pokemon/api.service";
 export class MyComponentComponent implements OnInit {
 
   id: number;
-  pokemons: Pokemon[] = [];
+  pokemons: ListPokemon;
   filter: Pokemon;
   pokemonChoisi: Pokemon;
-  pokemonsInSelect: Pokemon[] = [];
 
   constructor(public pokemonApi: ApiService) {
   }
 
   ngOnInit() {
     this.getPokemons();
-  }
-
-  displayChosenPokemon(){
-    alert(this.pokemonChoisi.results.name);
+    console.log(this.pokemons);
   }
 
   /**
@@ -32,33 +29,27 @@ export class MyComponentComponent implements OnInit {
    *  qui sera réellement triée après l'entrée de l'utilisateur
    */
   getPokemons() {
-    this.pokemonApi.getPokemon().subscribe(
-      (data: Pokemon[]) => {
-        this.pokemons = data;
-        this.pokemonsInSelect = data;
-      }
-    );
+    this.pokemonApi.getPokemon().subscribe(res => {
+      this.pokemons = res;
+    });
     this.initializeFilter();
   }
 
   /**
    * Récupère le détail d'un pokémon particulier
-   * @param pokemon
+   * @param name
    */
-  getPokemonInfo(pokemon: Pokemon) {
-    this.pokemonApi.getPokemonInfo(pokemon).subscribe(
+  getPokemonInfo(name: string) {
+    this.pokemonApi.getPokemonInfo(name).subscribe(
       res => {
         this.pokemonChoisi = res;
       }
     );
-    console.log(pokemon);
+    console.log(name);
   }
 
   initializeFilter() {
-    let results = new SubArray("", "");
-    let blank = new Pokemon();
-    blank.results = results;
-    this.filter = blank;
-    this.pokemonChoisi = blank;
+    this.pokemonChoisi = new Pokemon();
+    this.filter = this.pokemonChoisi;
   }
 }
