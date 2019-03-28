@@ -33,7 +33,8 @@ export class ApiService {
    * @param pokemon
    */
   getPokemonInfo(name: string): Observable<Pokemon> {
-    return this.http.get<Pokemon>(`${this.url.name}`)
+    let detailUrl = this.url + name;
+    return this.http.get<Pokemon>(`${detailUrl}`)
       .pipe(
         catchError(this.handleError)
       );

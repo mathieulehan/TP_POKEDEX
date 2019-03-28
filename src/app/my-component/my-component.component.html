@@ -14,15 +14,7 @@ Votre entrée : <input readonly value="{{id}}">
           [ngValue]="pokemonTrie">{{pokemonTrie.name}}</option>
 </select>
 
-<button (click)="getPokemonInfo(pokemonChoisi.name)">Je choisis ce pokémon !</button>
+<button (click)="getPokemonInfo(pokemonChoisi)">Je choisis ce pokémon !</button>
+<br>
 <app-pokemon-detail [pokemon]="pokemonChoisi"></app-pokemon-detail>
-<table>
-  <thead>
-  <th>Liste non triée</th>
-  </thead>
-  <tbody>
-  <tr *ngFor="let pokemon of pokemons.results">
-    <td>{{pokemon.name}}</td>
-  </tr>
-  </tbody>
-</table>
+

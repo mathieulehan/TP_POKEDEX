@@ -21,7 +21,6 @@ export class MyComponentComponent implements OnInit {
 
   ngOnInit() {
     this.getPokemons();
-    console.log(this.pokemons);
   }
 
   /**
@@ -39,13 +38,12 @@ export class MyComponentComponent implements OnInit {
    * Récupère le détail d'un pokémon particulier
    * @param name
    */
-  getPokemonInfo(name: string) {
-    this.pokemonApi.getPokemonInfo(name).subscribe(
+  getPokemonInfo(pokemon: Pokemon) {
+    this.pokemonApi.getPokemonInfo(pokemon.name).subscribe(
       res => {
         this.pokemonChoisi = res;
       }
     );
-    console.log(name);
   }
 
   initializeFilter() {
