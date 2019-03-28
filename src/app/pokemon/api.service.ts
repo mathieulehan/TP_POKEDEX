@@ -13,16 +13,18 @@ import {ListPokemon} from "./list-pokemon";
 @Injectable()
 export class ApiService {
   url: any;
+  urlTotal: any;
 
   constructor(private http: HttpClient) {
     this.url = 'https://pokeapi.co/api/v2/pokemon/';
+    this.urlTotal = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964"';
   }
 
   /**
    * Récupere une liste de pokemons
    */
   getPokemon(): Observable<ListPokemon> {
-    return this.http.get<ListPokemon>(`${this.url}`)
+    return this.http.get<ListPokemon>(`${this.urlTotal}`)
       .pipe(
         catchError(this.handleError)
       );

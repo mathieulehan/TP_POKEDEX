@@ -1,20 +1,24 @@
+<div class="selectPokemonLeft">
 <h1> Découverte d'Angular </h1>
 
-Entrez quelque chose :<input [(ngModel)]="id"><br>
+  Entrez quelque chose :<input [(ngModel)]="id"><br>
 Votre entrée : <input readonly value="{{id}}">
 
-<h1> Tri des pokémons par leur nom </h1>
+  <h1> Tri des pokémons par leur nom </h1>
 
-<p>
-  <label>Trier par nom</label>
-  <input [(ngModel)]="filter.name" class="form-control" name="name" type="text">
+  <p>
+    <label>Trier par nom</label>
+    <input [(ngModel)]="filter.name" class="form-control" name="name" type="text">
 </p>
 <select [(ngModel)]="pokemonChoisi">
   <option *ngFor="let pokemonTrie of pokemons.results| FilterPipe:filter"
           [ngValue]="pokemonTrie">{{pokemonTrie.name}}</option>
 </select>
 
-<button (click)="getPokemonInfo(pokemonChoisi)">Je choisis ce pokémon !</button>
-<br>
-<app-pokemon-detail [pokemon]="pokemonChoisi"></app-pokemon-detail>
+  <button (click)="getPokemonInfo(pokemonChoisi)">Je choisis ce pokémon !</button>
+  <br>
+</div>
+<div class="infosPokemonRight">
+  <app-pokemon-detail [pokemon]="pokemonChoisi"></app-pokemon-detail>
+</div>
 
