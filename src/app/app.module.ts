@@ -10,7 +10,14 @@ import {ApiService} from './pokemon/api.service';
 import {PokemonDetailComponent} from './pokemon-detail/pokemon-detail.component';
 import {PokemonComponent} from './pokemon/pokemon.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatCardModule, MatFormFieldModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatSelectModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -27,7 +34,11 @@ import {MatCardModule, MatFormFieldModule} from '@angular/material';
     HttpClientModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

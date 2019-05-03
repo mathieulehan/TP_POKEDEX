@@ -1,23 +1,42 @@
 <div class="selectPokemonLeft">
-<h1> Découverte d'Angular </h1>
 
-  Entrez quelque chose :<input [(ngModel)]="id"><br>
-Votre entrée : <input readonly value="{{id}}">
+  <mat-divider></mat-divider>
+  <h1> Découverte d'Angular </h1>
+  <mat-form-field>
+    <label>
+      <input [(ngModel)]="id" matInput placeholder="Entrez quelque chose">
+    </label>
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <label>
+      <input matInput placeholder="Vous avez entré :" readonly value="{{id}}">
+    </label>
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
 
   <h1> Tri des pokémons par leur nom </h1>
+  <mat-form-field>
+    <label>
+      <input [(ngModel)]="filter.name" matInput placeholder="Filtrez sur le nom...">
+    </label>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select [(ngModel)]="pokemonChoisi" placeholder="Select">
+      <mat-option *ngFor="let pokemonTrie of pokemons.results | FilterPipe:filter"
+                  [value]="pokemonTrie">{{pokemonTrie.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-  <p>
-    <label>Trier par nom</label>
-    <input [(ngModel)]="filter.name" class="form-control" name="name" type="text">
-</p>
-<select [(ngModel)]="pokemonChoisi">
-  <option *ngFor="let pokemonTrie of pokemons.results| FilterPipe:filter"
-          [ngValue]="pokemonTrie">{{pokemonTrie.name}}</option>
-</select>
+  <button (click)="getPokemonInfo(pokemonChoisi)" mat-button>Je choisis ce pokémon !</button>
 
-  <button (click)="getPokemonInfo(pokemonChoisi)">Je choisis ce pokémon !</button>
-  <br>
+  <mat-divider></mat-divider>
+
 </div>
+
+<mat-divider></mat-divider>
+
 <div class="infosPokemonRight">
   <app-pokemon-detail [pokemon]="pokemonChoisi"></app-pokemon-detail>
 </div>

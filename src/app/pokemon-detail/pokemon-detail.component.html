@@ -1,5 +1,14 @@
-<br><h5 class="infoPokemon">Nom : {{pokemon.name}}</h5>
-<br><h5 class="infoPokemon">ID : {{pokemon.id}}</h5>
-<br><h5 class="infoPokemon">Poids : {{pokemon.weight}}</h5>
-<br><h5 class="infoPokemon">Taille : {{pokemon.height}}</h5>
-<img class="infoPokemon" src={{pokemon.sprites.front_default}}>
+<mat-card class="pokemon-card">
+  <mat-card-header>
+    <mat-card-title>Nom : {{pokemon.name}}</mat-card-title>
+    <mat-card-subtitle>ID : {{pokemon.id}}</mat-card-subtitle>
+  </mat-card-header>
+  <img alt="Photo du pokémon" mat-card-image src="{{pokemon.sprites.front_default}}">
+  <mat-card-content>
+    <mat-card-actions>
+      <mat-label>Poids : {{pokemon.weight}}</mat-label>
+      <br>
+      <mat-label>Taille : {{pokemon.height}}</mat-label>
+    </mat-card-actions>
+  </mat-card-content>
+</mat-card>
