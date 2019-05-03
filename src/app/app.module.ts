@@ -5,10 +5,12 @@ import {AppComponent} from './app.component';
 import {MyComponentComponent} from './my-component/my-component.component';
 import {FormsModule} from '@angular/forms';
 import {FilterPokemonPipePipe} from './pokemon/filter-pokemon--pipe.pipe';
-import {HttpClientModule} from "@angular/common/http";
-import {ApiService} from "./pokemon/api.service";
+import {HttpClientModule} from '@angular/common/http';
+import {ApiService} from './pokemon/api.service';
 import {PokemonDetailComponent} from './pokemon-detail/pokemon-detail.component';
 import {PokemonComponent} from './pokemon/pokemon.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule, MatFormFieldModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,9 @@ import {PokemonComponent} from './pokemon/pokemon.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatFormFieldModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
