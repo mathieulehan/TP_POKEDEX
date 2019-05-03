@@ -1,8 +1,17 @@
 .selectPokemonLeft {
-  float: left;
+  margin-left: 1rem;
+  margin-right: auto;
+  max-width: 50%;
+  position: absolute;
 }
 
 .infosPokemonRight {
-  float: right;
+  display: flex;
   margin-right: 10%;
+  margin-top: 5rem;
+  float: right;
+}
+
+.mat-toolbar {
+  margin-top: 3rem;
 }

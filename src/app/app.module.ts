@@ -15,8 +15,10 @@ import {
   MatCardModule,
   MatDividerModule,
   MatFormFieldModule,
+  MatIconModule,
   MatInputModule,
-  MatSelectModule
+  MatSelectModule,
+  MatToolbarModule
 } from '@angular/material';
 
 @NgModule({
@@ -38,7 +40,9 @@ import {
     MatInputModule,
     MatSelectModule,
     MatDividerModule,
-    MatButtonModule
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

@@ -3,12 +3,12 @@
     <mat-card-title>Nom : {{pokemon.name}}</mat-card-title>
     <mat-card-subtitle>ID : {{pokemon.id}}</mat-card-subtitle>
   </mat-card-header>
-  <img alt="Photo du pokémon" mat-card-image src="{{pokemon.sprites.front_default}}">
+  <img alt="Photo du pokémon" mat-card-image src="{{pokemon?.sprites?.front_default}}">
   <mat-card-content>
     <mat-card-actions>
-      <mat-label>Poids : {{pokemon.weight}}</mat-label>
+      <mat-label>Poids : {{pokemon.weight}} kg</mat-label>
       <br>
-      <mat-label>Taille : {{pokemon.height}}</mat-label>
+      <mat-label>Taille : {{pokemon.height}} cm</mat-label>
     </mat-card-actions>
   </mat-card-content>
 </mat-card>
