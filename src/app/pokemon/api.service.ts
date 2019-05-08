@@ -3,8 +3,8 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {Observable, throwError} from "rxjs";
 import 'rxjs/add/operator/map';
 import {catchError} from 'rxjs/operators';
-import {Pokemon} from "./pokemon";
 import {ListPokemon} from "./list-pokemon";
+import {Pokemon} from "./pokemon";
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +32,7 @@ export class ApiService {
 
   /**
    * Récupère les infos d'un pokémon
-   * @param pokemon
+   * @param name
    */
   getPokemonInfo(name: string): Observable<Pokemon> {
     let detailUrl = this.url + name;
