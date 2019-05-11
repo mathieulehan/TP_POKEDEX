@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Pokemon} from "../pokemon/pokemon";
-import {ApiService} from "../pokemon/api.service";
-import {ListPokemon} from "../pokemon/list-pokemon";
+import {Pokemon} from '../pokemon/pokemon';
+import {ApiService} from '../pokemon/api.service';
+import {ListPokemon} from '../pokemon/list-pokemon';
 
 @Component({
   selector: 'app-my-component',
@@ -26,6 +26,7 @@ export class MyComponentComponent implements OnInit {
   /**
    * On initialise la liste non triée ainsi que la liste triée de pokemons,
    *  qui sera réellement triée après l'entrée de l'utilisateur
+   *
    */
   getPokemons() {
     this.pokemonApi.getPokemon().subscribe(res => {
@@ -36,7 +37,9 @@ export class MyComponentComponent implements OnInit {
 
   /**
    * Récupère le détail d'un pokémon particulier
-   * @param name
+   * On ne récupère pas les détails de tous les pokémons directement, par soucis de performance
+   * Seuelement les détails qui seront visibles par l'utilisateur sont donc demandés à l'API via getPokemonInfo
+   * @param pokemon le pokémon
    */
   getPokemonInfo(pokemon: Pokemon) {
     this.pokemonApi.getPokemonInfo(pokemon.name).subscribe(
@@ -46,6 +49,9 @@ export class MyComponentComponent implements OnInit {
     );
   }
 
+  /**
+   * Valeur par défaut pour le filtre sur les pokémons
+   */
   initializeFilter() {
     this.pokemonChoisi = new Pokemon();
     this.filter = this.pokemonChoisi;

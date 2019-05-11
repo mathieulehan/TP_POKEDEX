@@ -1,3 +1,6 @@
+/**
+ * Classe listant les attributs qu'à un pokémon
+ */
 export class Pokemon {
   id: string;
   name: string;

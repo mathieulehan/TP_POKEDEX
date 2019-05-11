@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Pokemon} from "../pokemon/pokemon";
+import {Pokemon} from '../pokemon/pokemon';
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -9,14 +9,13 @@ import {Pokemon} from "../pokemon/pokemon";
 
 export class PokemonDetailComponent implements OnInit {
 
+  // le pokemon a afficher
   @Input() pokemon: Pokemon;
-
 
   constructor() {
   }
 
   ngOnInit() {
-    this.pokemon = new Pokemon();
   }
 
 }
