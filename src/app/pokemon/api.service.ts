@@ -12,30 +12,12 @@ import {ListPokemon} from './list-pokemon';
 
 @Injectable()
 export class ApiService {
+  url: any;
+  urlTotal: any;
 
   constructor(private http: HttpClient) {
     this.url = 'https://pokeapi.co/api/v2/pokemon/';
     this.urlTotal = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=964"';
-  }
-
-  url: any;
-  urlTotal: any;
-
-  /**
-   * Gestion d'erreurs lors des requêtes à l'API
-   * @param error l'erreur rencontrée
-   */
-
-  private static handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    return throwError(
-      'Something bad happened; please try again later.');
   }
 
   /**
@@ -44,7 +26,7 @@ export class ApiService {
   getPokemon(): Observable<ListPokemon> {
     return this.http.get<ListPokemon>(`${this.urlTotal}`)
       .pipe(
-        catchError(ApiService.handleError)
+        catchError(this.handleError)
       );
   }
 
@@ -56,8 +38,24 @@ export class ApiService {
     const detailUrl = this.url + name;
     return this.http.get<Pokemon>(`${detailUrl}`)
       .pipe(
-        catchError(ApiService.handleError)
+        catchError(this.handleError)
       );
+  }
+
+  /**
+   * Gestion d'erreurs lors des requêtes à l'API
+   * @param error l'erreur rencontrée
+   */
+  private handleError(error: HttpErrorResponse) {
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
+    } else {
+      console.error(
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+    }
+    return throwError(
+      'Something bad happened; please try again later.');
   }
 
 }
